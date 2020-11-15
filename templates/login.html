@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+        .header{
+            background-color: #373a40;
+            color: #19d3da;
+            font-size: 4.5em;
+            text-align: center;
+            padding: 5vh;
+            margin-bottom: 5vh;
+            font-family: algerian, courier;
+        }
+
+        .outer{
+            margin-left:30vw;
+            margin-right: 30vw;
+            background-color: #686d76;
+            padding: 20px;
+            border: 2px;
+            border-radius: 25px;
+            box-shadow: 0px 0px 20px #19d3da;
+            margin-bottom: 5vh;
+
+        }
+
+        .fields{
+            text-align: right;
+            width: 40%;
+            color: white;
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+            margin-right: 5px;
+            border: 2px;
+            display: inline-block;
+
+        }
+        .in{
+            width: 40%;
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+        }
+        
+        .login{
+            font-size: 3em;
+            color: #19d3da;
+            text-align: center;
+            margin-bottom: 5vh;
+        }
+        .messages{
+            font-size: 1.5em;
+            text-align: center;
+            color: white;
+            width: 50vw;
+            margin-left: 25vw;
+        }
+        a:visited{
+            color: #19d3da;
+        }
+    </style>
+</head>
+<body>
+    <h1 class = "header">Speech to Text Summariser and List Maker</h1>
+    <div class="login">
+        <a href="register" style="text-decoration: none;">Register</a> | <span style="border-bottom: 2px solid #19d3da;">Login</span>
+    </div>
+    <div class="outer">
+        <form action="login" method="POST" class = "grid-container">
+            {% csrf_token %}
+            <label for="name"><div class="fields">USERNAME</div></label>
+            <input id = 'gridtopright' type="text" name = "username" placeholder="Username"><br>
+            
+            
+            <label for="email" class="fields">PASSWORD</label>
+            <input id = 'gridbottomright' type="password" name="password" placeholder="Password"><br>
+            
+            <div style="text-align: center;">
+                <input type="submit" name="submit" value="Submit" s>
+            </div>
+        </form>
+    </div>
+
+    <div class = "messages">
+        {% for message in messages%}
+        <h3>
+            {{message}}        
+        </h3>
+        {% endfor %}
+    </div>
+</body>
+</html>

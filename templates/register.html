@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        background-color: black;
+    }
+    .header{
+        background-color: #373a40;
+        color: #19d3da;
+        font-size: 4.5em;
+        text-align: center;
+        padding: 5vh;
+        margin-bottom: 5vh;
+        font-family: algerian, courier;
+    }
+
+    .outer{
+        margin-left:30vw;
+        margin-right:30vw;
+        background-color: #686d76;
+        padding: 20px;
+        border: 2px;
+        border-radius: 25px;
+        box-shadow: 0px 0px 20px #19d3da;
+        margin-bottom: 2vh;
+
+    }
+    .fields{
+        text-align: right;
+        width: 40%;
+        color: white;
+        padding-bottom: 3px;
+        margin-bottom: 10px;
+        margin-right: 5px;
+        border: 2px;
+        display: inline-block;
+    }
+    .in{
+        width: 40%;
+        padding-bottom: 3px;
+        margin-bottom: 10px;
+    }
+    .regis{
+        font-size: 3em;
+        color: #19d3da;
+        text-align: center;
+        margin-bottom: 5vh;
+    }
+    .messages{
+        font-size: 1.5em;
+        text-align: center;
+        color: white;
+        width: 50vw;
+        margin-left: 25vw;
+    }
+    a:visited{
+        color: #19d3da;
+    }
+</style>
+
+</head>
+<body>
+    <h1 class = "header">Speech to Text Summariser and List Maker</h1>
+    <div class="regis">
+        <span style="border-bottom: 2px solid #19d3da;">Register</span> | <a href="login" style="text-decoration: none;">Login</a>
+    </div>
+    <div class="outer">
+        <form action="register" method="POST">
+            {% csrf_token %}
+            <label for="first_name"><div class="fields">FIRST NAME</div></label>
+            <input type="text" name="first_name" placeholder="First Name"><br>
+
+            <label for="last_name" class="fields">LAST NAME</label>
+            <input type="text" name="last_name" placeholder="Last Name"><br>
+
+            <label for="username" class="fields">USERNAME</label>
+            <input type="text" name="username" placeholder="UserName"><br>
+
+            <label for="email" class="fields">EMAIL</label>
+            <input type="email" name="email" placeholder="Email"><br>
+
+            <label for="password1" class="fields">PASSWORD</label>
+            <input type="password" name="password1" placeholder="Password"><br>
+            
+            <label for="password2" class="fields"> CONFIRM PASSWORD</label>
+            <input type="password" name="password2" placeholder="Confirm Password"><br>
+
+            <div style="text-align: center;">
+                <input type="submit">
+            </div>
+            
+        </form>
+    </div>
+    <div class="messages">
+        {% for message in messages%}
+        <h3>
+            {{message}}        
+        </h3>
+        {% endfor %}
+    </div>
+</body>
+</html>
